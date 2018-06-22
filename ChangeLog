@@ -1,0 +1,22 @@
+2015-12-23  Danilo Chang <ray2501@gmail.com>
+
+    * v0.3: Remove hot-plug support
+
+2014-03-14  Danilo Chang <ray2501@gmail.com>
+
+    * v0.3: configure.in - TEA_ADD_HEADERS macro remove tclusb.h
+      Update Windows rc file
+      Remove tests folder
+
+2014-03-09  Danilo Chang <ray2501@gmail.com>
+
+    * v0.2: Add hot-plug support            	        
+
+2014-03-06  Danilo Chang <ray2501@gmail.com>
+
+    * v0.1: draft version, copy from Sample extension	            	        
+      Add libusb 1.0.18 MSVC-x86 files to win/libusb folder
+      Setup MSVC link base to 0x10980000
+
+      Add listdevs.tcl to example folder to test.
+
