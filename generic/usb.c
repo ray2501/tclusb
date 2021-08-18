@@ -574,7 +574,9 @@ int USB_FREE_DEVICE_ELEMENT(ClientData clientData, Tcl_Interp *interp,
     }
 
     list_obj = obj[1];
-    Tcl_ListObjLength(interp, list_obj, &length);
+    if (Tcl_ListObjLength(interp, list_obj, &length) != TCL_OK) {
+        return TCL_ERROR;
+    }
 
     for(i = 0; i < length; i++) {
 	Tcl_ListObjIndex(interp, list_obj, i,  &element);
