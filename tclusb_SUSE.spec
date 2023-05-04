@@ -9,7 +9,7 @@ Release:       0
 License:       BSD
 Group:         Development/Libraries/Tcl
 Source:        %name-%version.tar.gz
-URL:           https://sites.google.com/site/ray2501/tclusb
+URL:           https://github.com/ray2501/tclusb
 Buildrequires: autoconf
 Buildrequires: gcc
 Buildrequires: libusb-1_0-devel
