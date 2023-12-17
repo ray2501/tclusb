@@ -4,7 +4,7 @@ dnl	generate the file "configure", which is run during Tcl installation
 dnl	to configure the system for the local environment.
 
 #-----------------------------------------------------------------------
-# Configure.in for Tcl Extensions.  The only places you should
+# Sample configure.ac for Tcl Extensions.  The only places you should
 # need to modify this file are marked by the string __CHANGE__
 #-----------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ AC_INIT([tclusb], [0.3])
 # as well as PKG_LIB_FILE and PKG_STUB_LIB_FILE.
 #--------------------------------------------------------------------
 
-TEA_INIT([3.9])
+TEA_INIT()
 
 AC_CONFIG_AUX_DIR(tclconfig)
 
@@ -71,9 +71,9 @@ TEA_SETUP_COMPILER
 # and PKG_TCL_SOURCES.
 #-----------------------------------------------------------------------
 
-TEA_ADD_SOURCES([generic/usb.c generic/tclusb.c])
+TEA_ADD_SOURCES([usb.c tclusb.c])
 TEA_ADD_HEADERS([])
-TEA_ADD_INCLUDES([-I${srcdir}/generic])
+TEA_ADD_INCLUDES()
 TEA_ADD_LIBS([-lusb-1.0])
 TEA_ADD_CFLAGS([])
 TEA_ADD_STUB_SOURCES([])
@@ -101,7 +101,7 @@ else
     # Ensure no empty else clauses
     :
     #TEA_ADD_SOURCES([unix/unixFile.c])
-    #TEA_ADD_LIBS([])
+    #TEA_ADD_LIBS([-lsuperfly])
 fi
 
 #--------------------------------------------------------------------
@@ -149,16 +149,6 @@ TEA_CONFIG_CFLAGS
 TEA_ENABLE_SYMBOLS
 
 #--------------------------------------------------------------------
-# Everyone should be linking against the Tcl stub library.  If you
-# can't for some reason, remove this definition.  If you aren't using
-# stubs, you also need to modify the SHLIB_LD_LIBS setting below to
-# link against the non-stubbed Tcl library.  Add Tk too if necessary.
-#--------------------------------------------------------------------
-
-AC_DEFINE(USE_TCL_STUBS, 1, [Use Tcl stubs])
-#AC_DEFINE(USE_TK_STUBS, 1, [Use Tk stubs])
-
-#--------------------------------------------------------------------
 # This macro generates a line to use when building a library.  It
 # depends on values set by the TEA_ENABLE_SHARED, TEA_ENABLE_SYMBOLS,
 # and TEA_LOAD_TCLCONFIG macros above.
@@ -178,9 +168,24 @@ TEA_PROG_TCLSH
 #TEA_PROG_WISH
 
 #--------------------------------------------------------------------
-# Finally, substitute all of the various values into the Makefile.
-# You may alternatively have a special pkgIndex.tcl.in or other files
-# which require substituting th AC variables in.  Include these here.
+# Setup a *Config.sh.in configuration file.
 #--------------------------------------------------------------------
 
-AC_OUTPUT([Makefile pkgIndex.tcl])
+#TEA_EXPORT_CONFIG([sample])
+#AC_SUBST(SAMPLE_VAR)
+
+#--------------------------------------------------------------------
+# Specify files to substitute AC variables in. You may alternatively
+# have a special pkgIndex.tcl.in or other files which require
+# substituting the AC variables in. Include these here.
+#--------------------------------------------------------------------
+
+AC_CONFIG_FILES([Makefile pkgIndex.tcl])
+#AC_CONFIG_FILES([sampleConfig.sh])
+
+#--------------------------------------------------------------------
+# Finally, substitute all of the various values into the files
+# specified with AC_CONFIG_FILES.
+#--------------------------------------------------------------------
+
+AC_OUTPUT
