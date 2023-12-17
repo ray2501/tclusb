@@ -53,17 +53,13 @@ below is an example:
 WINDOWS BUILD
 =====
 
-Please put the file libusb-1.0.lib (MSVC x86 static build) to win/libusb/lib.
-If you need build a X64 version, you need download windows binary files and
-put libusb-1.0.lib (MSVC X64 static build) to win/libusb/lib.
+The recommended method to build extensions under windows is to use the
+MSYS2 + MinGW-w64 build process. This provides a Unix-style build while
+generating native Windows binaries. Using the MSYS2 + MinGW-w64 build tools
+means that you can use the same configure script as per the Unix build
+to create a Makefile.
 
-The install dir in rules.vc setup _INSTALLDIR to C:\Tcl, if your Tcl folder
-is not in this path, please update or setup _INSTALLDIR value.
+User needs to install MinGW-w64 libusb package before to build this
+extension.
 
-Install steps (for x86):
-nmake -f makefile.vc MACHINE=IX86
-nmake -f makefile.vc install
-
-* NOTE: If you want to use usb::open command on Windows platform,
-        I think you need WinUSB driver (not test on Windows, sorry).
 
