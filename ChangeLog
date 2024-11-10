@@ -1,4 +1,8 @@
-2012-12-17  Danilo Chang <ray2501@gmail.com>
+2024-11-10  Danilo Chang <ray2501@gmail.com>
+
+    * Use Tcl_Size to replace int (for Tcl 9)
+
+2023-12-17  Danilo Chang <ray2501@gmail.com>
 
     * Bump version to 0.4
     * Update tclconfig files

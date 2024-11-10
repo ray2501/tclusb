@@ -26,7 +26,7 @@ void Tclusb_InitHashTable()
 }
 
 
-int USB_INIT(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST obj[])
+int USB_INIT(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *const obj[])
 {
     int result;
 
@@ -39,7 +39,7 @@ int USB_INIT(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST
 }
 
 
-int USB_EXIT(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST obj[])
+int USB_EXIT(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *const obj[])
 {
     libusb_exit(NULL);
 
@@ -48,7 +48,7 @@ int USB_EXIT(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST
 
 
 int USB_HAS_CAPABILITY(ClientData clientData, Tcl_Interp *interp, 
-        int objc, Tcl_Obj *CONST obj[])
+        int objc, Tcl_Obj *const obj[])
 {
     Tcl_Obj *cap_result;
     int capability;
@@ -83,7 +83,7 @@ int USB_HAS_CAPABILITY(ClientData clientData, Tcl_Interp *interp,
 
 
 int USB_GET_DEVICE_LIST(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_Obj *returnvalue = NULL;
     Tcl_HashEntry *hashEntryPtr;
@@ -112,11 +112,11 @@ int USB_GET_DEVICE_LIST(ClientData clientData, Tcl_Interp *interp,
 
 
 int USB_FREE_DEVICE_LIST(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_HashEntry *hashEntryPtr;
     char *handle;
-    int len;
+    Tcl_Size len;
 
     libusb_device **devs;
 
@@ -157,12 +157,12 @@ int USB_FREE_DEVICE_LIST(ClientData clientData, Tcl_Interp *interp,
 
 
 int USB_OPEN(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_Obj *returnvalue = NULL;
     Tcl_HashEntry *hashEntryPtr;
     char *handle;
-    int len;
+    Tcl_Size len;
     char handleName[16 + TCL_INTEGER_SPACE];
     int newvalue;    
 
@@ -212,11 +212,11 @@ int USB_OPEN(ClientData clientData, Tcl_Interp *interp,
 
 
 int USB_CLOSE(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_HashEntry *hashEntryPtr;
     char *handle;
-    int len;
+    Tcl_Size len;
     
     libusb_device_handle *dev_handle;
     
@@ -257,7 +257,7 @@ int USB_CLOSE(ClientData clientData, Tcl_Interp *interp,
 
 
 int USB_GET_DEVICE_DESCRIPTOR(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_HashEntry *hashEntryPtr;
     Tcl_Obj *listobj = NULL;
@@ -269,7 +269,7 @@ int USB_GET_DEVICE_DESCRIPTOR(ClientData clientData, Tcl_Interp *interp,
     Tcl_Obj *iManufacturer, *iProduct, *iSerialNumber;
     Tcl_Obj *bNumConfigurations;
     char *handle;
-    int len;
+    Tcl_Size len;
 
     libusb_device *dev;
     struct libusb_device_descriptor desc;
@@ -351,12 +351,12 @@ int USB_GET_DEVICE_DESCRIPTOR(ClientData clientData, Tcl_Interp *interp,
 
 
 int USB_GET_BUS_NUMBER(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_HashEntry *hashEntryPtr;
     Tcl_Obj *bus_number;
     char *handle;
-    int len;
+    Tcl_Size len;
 
     libusb_device *dev;
     int bus = 0;
@@ -391,12 +391,12 @@ int USB_GET_BUS_NUMBER(ClientData clientData, Tcl_Interp *interp,
 }
 
 int USB_GET_DEVICE_ADDRESS(ClientData clientData, Tcl_Interp *interp,
-        int objc, Tcl_Obj *CONST obj[])
+        int objc, Tcl_Obj *const obj[])
 {
     Tcl_HashEntry *hashEntryPtr;
     Tcl_Obj *dev_address;
     char *handle;
-    int len;
+    Tcl_Size len;
 
     libusb_device *dev;
     int address = 0;
@@ -433,13 +433,13 @@ int USB_GET_DEVICE_ADDRESS(ClientData clientData, Tcl_Interp *interp,
 
 
 int USB_GET_STRING_DESCRIPTOR_ASCII(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_HashEntry *hashEntryPtr;
     Tcl_Obj *descriptor;
     int index;
     char *handle;
-    int len;
+    Tcl_Size len;
 
     libusb_device_handle *dev_handle;
     uint8_t desc_index;
@@ -501,14 +501,14 @@ int USB_GET_STRING_DESCRIPTOR_ASCII(ClientData clientData, Tcl_Interp *interp,
  * puts these elements to our hash table.
  */
 int USB_GET_DEVICE_ELEMENT(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_HashEntry *hashEntryPtr;
     Tcl_Obj *listobj = NULL;
     Tcl_Obj *strobj = NULL;
     char handleName[16 + TCL_INTEGER_SPACE];
     char *handle;
-    int len;
+    Tcl_Size len;
 
     libusb_device **devs;
     libusb_device *dev;
@@ -560,14 +560,13 @@ int USB_GET_DEVICE_ELEMENT(ClientData clientData, Tcl_Interp *interp,
  * This function helps to remove libusb_device elements in our hash table.
  */
 int USB_FREE_DEVICE_ELEMENT(ClientData clientData, Tcl_Interp *interp, 
-	int objc, Tcl_Obj *CONST obj[])
+	int objc, Tcl_Obj *const obj[])
 {
     Tcl_Obj *list_obj = NULL;
     Tcl_Obj *element = NULL;
     Tcl_HashEntry *hashEntryPtr;
     char *handle;
-    int length, i;
-    int str_len;
+    Tcl_Size length, i, str_len;
 
     if(objc != 2) {
         Tcl_WrongNumArgs(interp, 1, obj, "usbHandle");
