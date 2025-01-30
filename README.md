@@ -13,19 +13,19 @@ to test.
 
 ## Implement commands
 
-usb::init  
-usb::exit  
-usb::has_capability  
-usb::get_device_list  
-usb::free_device_list  
-usb::open  
-usb::close  
-usb::get_device_descriptor  
-usb::get_bus_number  
-usb::get_device_address  
-usb::get_string_descriptor_ascii  
-usb::get_device_list_element  
-usb::free_device_list_element  
+::usb::init  
+::usb::exit  
+::usb::has_capability  
+::usb::get_device_list  
+::usb::free_device_list  
+::usb::open  
+::usb::close  
+::usb::get_device_descriptor  
+::usb::get_bus_number  
+::usb::get_device_address  
+::usb::get_string_descriptor_ascii  
+::usb::get_device_list_element  
+::usb::free_device_list_element  
 
 
 UNIX BUILD
