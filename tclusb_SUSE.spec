@@ -4,7 +4,7 @@
 
 Name:          tclusb
 Summary:       List USB devices in Tcl via libusb
-Version:       0.4
+Version:       0.5
 Release:       0
 License:       BSD
 Group:         Development/Libraries/Tcl
